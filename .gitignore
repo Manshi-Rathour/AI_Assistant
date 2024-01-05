@@ -1,0 +1,8 @@
+.env
+venv/
+# handwritten recognition
+advance-stratum-409704-ae631be80074.json
+# speech to text
+advance-stratum-409704-50ff1f2aa864.json
+# translation
+advance-stratum-409704-8f6e8f9201b9.json

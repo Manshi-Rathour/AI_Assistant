@@ -1,0 +1,146 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #212529;
+}
+
+#icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.custom-navbar {
+    background-color: black;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    top: 0; 
+    transition: background-color 0.5s ease;
+}
+
+.custom-navbar.navbar-scroll {
+    background-color: black;
+}
+
+#login {
+    margin-right: 2vh;
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(183, 183, 183);
+}
+.white-text {
+    color: white !important;
+}
+
+.white-text:hover {
+    text-decoration: underline;
+}
+@media (min-width: 420px) and (max-width: 599px) {
+    .custom-offcanvas {
+        width: 60% !important; 
+    }
+}
+
+@media (max-width: 419px) {
+    .custom-offcanvas {
+        width: 75% !important; 
+    }
+}
+
+
+
+
+
+/* Chatbot */
+
+body .chatbot-section {
+    margin-top: 90px; 
+}
+
+body .chatbot-section #searches {
+    color: white;
+}
+
+#new-chat {
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid rgb(183, 183, 183);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#new-chat:hover {
+    background-color: #101010;
+}
+
+body .chatbot-section #result2 {
+    padding: 15px;
+    background-color: #101010;
+    color: white;
+    overflow-y: auto;
+    height: 70vh;
+}
+.result-scroll::-webkit-scrollbar {
+    width: 5px;
+    /* display: none; */
+}
+.result-scroll::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the thumb (the draggable part) */
+}
+
+body .chatbot-section #user-query2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+body .chatbot-section #queryInput2 {
+    border-color: rgb(183, 183, 183);
+    color: white;
+    background-color: #101010;
+    flex: 1;
+}
+
+#user-query2 textarea::placeholder {
+    color: rgb(183, 183, 183);
+   
+}
+#queryInput2 {
+    resize: none; /* Disable user resizing */
+    overflow: auto; /* Hide overflow content */
+    max-height: 150px !important;
+    height: 30px;
+    scrollbar-width: thin; 
+}
+
+#queryInput2::-webkit-scrollbar {
+    width: 6px; /* For WebKit-based browsers */
+}
+
+#queryInput2::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 3px; 
+}
+
+
+.card {
+   
+    height: 130px !important;
+    border: 1px solid rgb(183, 183, 183);
+    background-color: #101010; 
+    color: rgb(183, 183, 183); 
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.custom-upload-section {
+    margin-bottom: 20px; 
+    height: 110px !important;
+}
+
+
+
+

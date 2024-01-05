@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Assistant</title>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <!-- <script src="../static/script.js"></script> -->
+
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+
+        <!-- css file -->
+        <link rel="stylesheet" type="text/css" href="../static/style.css">
+    </head>
+
+    <body>
+
+        <div class="banner">
+            <div class="banner-text">
+                <p id="typed-text">Unlocking the <br> power of <br> AI !</p>
+            </div>
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg custom-navbar">
+                <div class="container-fluid">
+                    <a id="icon" class="navbar-brand" href="/">
+                        <img src="/static/ai (1).png" alt="Bootstrap" width="30"
+                            height="24">
+                        <span style="font-weight: bold; color: white;">AI
+                            Assistant</span>
+                    </a>
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark"
+                        tabindex="-1" id="navbarNavDropdown"
+                        aria-labelledby="navbarNavDropdownLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title"
+                                id="navbarNavDropdownLabel">Menu</h5>
+                            <button type="button"
+                                class="btn-close btn-close-white"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active white-text"
+                                        aria-current="page" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link white-text"
+                                        href="#contact">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link white-text" href="#">How
+                                        to use</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle white-text"
+                                        href="#" role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Features
+                                    </a>
+                                    <ul
+                                        class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item"
+                                                href="/chatbot">Chatbot</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/summary">Text
+                                                Summarization</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/extract_text">Extract
+                                                Text</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/conversion">Convert
+                                                Speech to Text</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- Login and Signup buttons -->
+                            <div class="ms-auto ">
+                                <button id="login" class="btn btn-outline-light"
+                                    type="button" data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">Login</button>
+                                <button id="signup"
+                                    class="btn btn-outline-light ms-2"
+                                    type="button" data-bs-toggle="modal"
+                                    data-bs-target="#signupModal">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1"
+            aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Your login form goes here -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="loginInputEmail"
+                                    class="form-label">Email
+                                    address</label>
+                                <input type="email" class="form-control"
+                                    id="loginInputEmail"
+                                    placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginInputPassword"
+                                    class="form-label">Password</label>
+                                <input type="password" class="form-control"
+                                    id="loginInputPassword"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit"
+                                class="btn btn-outline-dark">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1"
+            aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="signupModalLabel">Signup</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Your signup form goes here -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="signupInputUsername"
+                                    class="form-label">Username</label>
+                                <input type="text" class="form-control"
+                                    id="signupInputUsername"
+                                    placeholder="Username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupInputEmail"
+                                    class="form-label">Email
+                                    address</label>
+                                <input type="email" class="form-control"
+                                    id="signupInputEmail"
+                                    placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupInputPassword"
+                                    class="form-label">Password</label>
+                                <input type="password" class="form-control"
+                                    id="signupInputPassword"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit"
+                                class="btn btn-outline-dark">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card text-light bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Chatbot</h5>
+                            <p class="card-text">Need help? Our chatbot is here
+                                to answer your questions and provide support. To
+                                get started, simply click on the "Try" button
+                                and enter your question.</p>
+                            <a href="/chatbot" class="btn btn-outline-light">Try
+                                <img
+                                    src="/static/arrow-up-right.svg" alt></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card text-light bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Summarize Your Texts in a
+                                Flash</h5>
+                            <p class="card-text">Save time and effort by
+                                extracting the essence of your reading materials
+                                from various sources, including PDFs, images,
+                                URLs, and plain text. Gain a quick understanding
+                                of complex documents.</p>
+                            <a href="/summary" class="btn btn-outline-light">Try
+                                <img
+                                    src="/static/arrow-up-right.svg" alt></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Card 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card text-light bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Extract Text from Hanwritten
+                                Sources</h5>
+                            <p class="card-text">It seamlessly
+                                supports the extraction of textual content,
+                                whether it's from images of handwritten notes or
+                                standard PDF files.</p>
+                            <a href="/extract_text"
+                                class="btn btn-outline-light">Try <img
+                                    src="/static/arrow-up-right.svg" alt></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card text-light bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Convert Speech to Text</h5>
+                            <p class="card-text">Convert spoken words into text
+                                in different languages! Whether it's English,
+                                Hindi, or any other supported language.</p>
+                            <a href="/conversion"
+                                class="btn btn-outline-light">Try <img
+                                    src="/static/arrow-up-right.svg" alt></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+
+        <footer class="text-light py-3" id="contact"
+            style="background-color: transparent;">
+            <div class="container text-center">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> manshi2086@email.com</p>
+
+                <!-- Social Media Icons with Links -->
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/_rathour_manshi/"
+                        target="_blank" class="text-light mx-2">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/manshi-rathour-bb0b87272/"
+                        target="_blank" class="text-light mx-2">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/Manshi-Rathour " target="_blank"
+                        class="text-light mx-2">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.kaggle.com/manshirathour "
+                        target="_blank" class="text-light mx-2">
+                        <i class="fab fa-kaggle fa-lg"></i>
+                    </a>
+                    <a href="https://www.hackerrank.com/manshi2086"
+                        target="_blank" class="text-light mx-2">
+                        <i class="fab fa-hackerrank fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery -->
+        <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
+        <!-- Bootstrap 5 JavaScript -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+
+        <!-- JavaScript file -->
+        <script src="../static/script.js"></script>
+    </body>
+</html>

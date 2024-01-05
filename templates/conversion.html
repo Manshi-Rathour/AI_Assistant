@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Extract Text</title>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <!-- <script src="../static/script.js"></script> -->
+
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+
+        <!-- css file -->
+        <link rel="stylesheet" type="text/css" href="/static/conversion.css">
+    </head>
+
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid">
+                <a id="icon" class="navbar-brand" href="/">
+                    <img src="/static/ai (1).png" alt="Bootstrap" width="30"
+                        height="24">
+                    <span style="font-weight: bold; color: white;">AI
+                        Assistant</span>
+                </a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark"
+                    tabindex="-1" id="navbarNavDropdown"
+                    aria-labelledby="navbarNavDropdownLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title"
+                            id="navbarNavDropdownLabel">Menu</h5>
+                        <button type="button"
+                            class="btn-close btn-close-white"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active white-text"
+                                    aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link white-text"
+                                    href="#contact">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link white-text" href="#">How
+                                    to use</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle white-text"
+                                    href="#" role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Features
+                                </a>
+                                <ul
+                                    class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item"
+                                            href="/chatbot">Chatbot</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="/summary">Text
+                                            Summarization</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="/extract_text">Extract
+                                            Text</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="/conversion">Convert
+                                            Speech to Text</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!-- Login and Signup buttons -->
+                        <div class="ms-auto ">
+                            <button id="login" class="btn btn-outline-light"
+                                type="button" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login</button>
+                            <button id="signup"
+                                class="btn btn-outline-light ms-2"
+                                type="button" data-bs-toggle="modal"
+                                data-bs-target="#signupModal">Signup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1"
+            aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Your login form goes here -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="loginInputEmail"
+                                    class="form-label">Email
+                                    address</label>
+                                <input type="email" class="form-control"
+                                    id="loginInputEmail"
+                                    placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginInputPassword"
+                                    class="form-label">Password</label>
+                                <input type="password" class="form-control"
+                                    id="loginInputPassword"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit"
+                                class="btn btn-outline-dark">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1"
+            aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="signupModalLabel">Signup</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Your signup form goes here -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="signupInputUsername"
+                                    class="form-label">Username</label>
+                                <input type="text" class="form-control"
+                                    id="signupInputUsername"
+                                    placeholder="Username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupInputEmail"
+                                    class="form-label">Email
+                                    address</label>
+                                <input type="email" class="form-control"
+                                    id="signupInputEmail"
+                                    placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupInputPassword"
+                                    class="form-label">Password</label>
+                                <input type="password" class="form-control"
+                                    id="signupInputPassword"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit"
+                                class="btn btn-outline-dark">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chatbot section -->
+        <div class="container chatbot-section">
+            <div class="row">
+                <!-- Left side: searches -->
+                <div class="col-md-8 order-md-1 order-2" id="searches">
+                    <!-- upload text and result area -->
+                    <div class="result">
+                        <div id="result4" class="result-scroll mb-3"></div>
+                    </div>
+                </div>
+
+                <!-- Right side: record-button with microphone icon and language dropdown -->
+                <div class="col-md-4 order-md-2 order-1" id="record-button">
+                    <div id="recording">
+                        <!-- Start/Stop Recording button -->
+                        <button id="toggleRecordingButton" class="btn btn-outline-light mb-3">
+                            <i class="fas fa-microphone"></i> Start Recording
+                        </button>
+                    </div>
+
+                    <!-- Language Dropdown -->
+                    <div id="language">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="selected_input_lang">Speak In</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" onclick="change_input_Lang('English')">English</a></li>
+                                <li><a class="dropdown-item" onclick="change_input_Lang('Hindi')">Hindi</a></li>
+                                <li><a class="dropdown-item" onclick="change_input_Lang('French')">French</a></li>
+                                <li><a class="dropdown-item" onclick="change_input_Lang('German')">German</a></li>
+                            </ul>
+                        </div>
+                        
+                        
+
+                        <div class="arrow">&#9660;</div>
+
+                        <div class="arrow responsive-arrow">&#9658;</div>
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="selected_output_lang">Convert To</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" onclick="change_output_Lang('English')">English</a></li>
+                                <li><a class="dropdown-item" onclick="change_output_Lang('Hindi')">Hindi</a></li>
+                                <li><a class="dropdown-item" onclick="change_output_Lang('French')">French</a></li>
+                                <li><a class="dropdown-item" onclick="change_output_Lang('German')">German</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
+        <!-- Bootstrap 5 JavaScript -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+
+        <!-- JavaScript file -->
+        <script src="../static/conversion.js"></script>
+    </body>
+</html>

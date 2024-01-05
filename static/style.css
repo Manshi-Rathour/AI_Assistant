@@ -1,0 +1,132 @@
+/* Header */
+
+body {
+    background-color: black;
+}
+
+#icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.custom-navbar {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    top: 0; 
+    transition: background-color 0.5s ease; /* Add transition for smooth color change */
+}
+
+.custom-navbar.navbar-scroll {
+    background-color: black;
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(183, 183, 183); 
+}
+
+@media (min-width: 420px) and (max-width: 599px) {
+    .custom-offcanvas {
+        width: 60% !important; 
+    }
+}
+
+@media (max-width: 419px) {
+    .custom-offcanvas {
+        width: 75% !important; 
+    }
+}
+
+
+#login {
+    margin-right: 2vh;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.white-text:hover {
+    text-decoration: underline;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(16, 16, 16, 0.75), rgba(0, 0, 0, 0.75)), url(/static/banner2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+}
+
+@media (min-width: 900px) and (max-width: 1225px) {
+    .banner {
+        background-image: linear-gradient(rgba(16, 16, 16, 0.75), rgba(0, 0, 0, 0.75)), url(/static/banner2.jpg);
+    }
+
+    .banner-text {
+        /* right: 5%; */
+        /* justify-content: center; */
+        /* text-align: center; */
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .banner {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/static/banner2.jpg);
+    }
+
+    .banner-text {
+        font-size: 2rem;
+        text-align: center;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+
+
+/* Cards */
+
+.card.text-light.bg-dark {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.card.text-light.bg-dark:hover {
+    transform: scale(1.05);
+}
+
+.card.text-light.bg-dark .btn-outline-light img {
+    filter: brightness(0) invert(1);   /* Adjust the default color of the icon to white */
+    transition: filter 0.3s ease;
+}
+
+.card.text-light.bg-dark .btn-outline-light:hover img {
+    filter: brightness(0) invert(0);   /* Change the color of the icon to black on hover */
+}
+
+
+
+/* Footer */
+
+footer{
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+}
