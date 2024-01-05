@@ -1,5 +1,6 @@
 .env
 venv/
+PyMuPDF/
 # handwritten recognition
 advance-stratum-409704-ae631be80074.json
 # speech to text

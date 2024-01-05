@@ -4,7 +4,7 @@ import pytesseract
 import io
 from io import BytesIO
 import base64
-import fitz
+import fitz_new
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -213,7 +213,7 @@ async def summarize_pdf(file_input: FileInput):
 
 
 def extract_text_from_pdf(pdf_bytes):
-    pdf_document = fitz.open(stream=pdf_bytes, filetype="pdf")
+    pdf_document = fitz_new.open(stream=pdf_bytes, filetype="pdf")
     text = ""
 
     for page_number in range(pdf_document.page_count):
@@ -225,7 +225,7 @@ def extract_text_from_pdf(pdf_bytes):
     return text
 
 
-# Common function to generate summary for text not url
+
 
 
 # Cache with a time-to-live (TTL) of 1 hour
@@ -394,7 +394,7 @@ def process_pdf(pdf_content):
 
 
 def pdf_to_images(pdf_path, image_folder):
-    pdf_document = fitz.open(pdf_path)
+    pdf_document = fitz_new.open(pdf_path)
     image_contents = []
 
     for page_number in range(pdf_document.page_count):
