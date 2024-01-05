@@ -129,7 +129,7 @@ async def get_summary(input_data: TextInput):
     return await generate_summary(user_message)
 
 
-pytesseract.pytesseract.tesseract_cmd = "Tesseract-OCR\\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = "Tesseract-OCR/tesseract.exe"
 
 
 @app.post("/summarize-text")
@@ -337,6 +337,7 @@ async def extract_image_text(image_data: ImageRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 def extract_text_image(image_content):
     client = vision.ImageAnnotatorClient()
 
@@ -349,10 +350,9 @@ def extract_text_image(image_content):
     return None
 
 
-
-
 class FileInput(BaseModel):
     file: str
+
 
 @app.post("/extract-pdf")
 async def extract_pdf_text(file_input: FileInput):
@@ -367,6 +367,7 @@ async def extract_pdf_text(file_input: FileInput):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 def process_pdf(pdf_content):
     image_folder = 'temp_images'

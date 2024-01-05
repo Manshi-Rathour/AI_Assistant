@@ -355,6 +355,8 @@ function appendPdfSummary(role, text, resultArea) {
         const icon = '<i class="fas fa-robot"></i>';
         messageElement.innerHTML = `${icon} : ${text}`;
 
+        messageElement.style.padding = '5px';
+
         messageElement.classList.add('bg-dark');
         resultArea.appendChild(messageElement);
     }
