@@ -129,7 +129,7 @@ async def get_summary(input_data: TextInput):
     return await generate_summary(user_message)
 
 
-pytesseract.pytesseract.tesseract_cmd = "Tesseract-OCR/tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = "/Tesseract-OCR/tesseract.exe"
 
 
 @app.post("/summarize-text")
