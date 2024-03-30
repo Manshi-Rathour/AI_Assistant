@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
             messageElement.id = 'user_area';
             const icon = '<i class="fas fa-user"></i>';
             messageElement.innerHTML = `${icon} : ${text}`;
-
+            messageElement.style.padding = '5px';
             result.appendChild(messageElement);
         }
         else {
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
             messageElement.id = 'chatbot_area';
             const icon = '<i class="fas fa-robot"></i>';
             messageElement.innerHTML = `${icon} : ${text}`;
-
+            messageElement.style.padding = '5px';
             messageElement.classList.add('bg-dark');
             result.appendChild(messageElement);
         }

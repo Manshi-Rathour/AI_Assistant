@@ -189,64 +189,27 @@
         </div>
 
         <!-- Chatbot section -->
-        <div class="container chatbot-section">
-            <div class="row">
-                <!-- Left side: searches -->
-                <div class="col-md-8 order-md-1 order-2" id="searches">
-                    <!-- upload text and result area -->
-                    <div class="result">
-                        <div id="result4" class="result-scroll mb-3"></div>
-                    </div>
-                </div>
-
-                <!-- Right side: record-button with microphone icon and language dropdown -->
-                <div class="col-md-4 order-md-2 order-1" id="record-button">
-                    <div id="recording">
-                        <!-- Start/Stop Recording button -->
-                        <button id="toggleRecordingButton" class="btn btn-outline-light mb-3">
-                            <i class="fas fa-microphone"></i> Start Recording
-                        </button>
-                    </div>
-
-                    <!-- Language Dropdown -->
-                    <div id="language">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="selected_input_lang">Speak In</span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" onclick="change_input_Lang('English')">English</a></li>
-                                <li><a class="dropdown-item" onclick="change_input_Lang('Hindi')">Hindi</a></li>
-                                <li><a class="dropdown-item" onclick="change_input_Lang('French')">French</a></li>
-                                <li><a class="dropdown-item" onclick="change_input_Lang('German')">German</a></li>
-                            </ul>
-                        </div>
-                        
-                        
-
-                        <div class="arrow">&#9660;</div>
-
-                        <div class="arrow responsive-arrow">&#9658;</div>
-
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="selected_output_lang">Convert To</span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" onclick="change_output_Lang('English')">English</a></li>
-                                <li><a class="dropdown-item" onclick="change_output_Lang('Hindi')">Hindi</a></li>
-                                <li><a class="dropdown-item" onclick="change_output_Lang('French')">French</a></li>
-                                <li><a class="dropdown-item" onclick="change_output_Lang('German')">German</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+        <div id="buttons">
+            <button type="button" class="btn btn-light"><i class="fas fa-font"></i> Text</button>
+            <button type="button" class="btn btn-light"><i class="fas fa-image"></i> Images</button>
+            <button type="button" class="btn btn-light"><i class="fas fa-file-pdf"></i> Documents</button>
         </div>
+
+        <div class="big-container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="sm-container container-fluid bg-light p-3">
+                    <textarea class="custom-textarea" placeholder="Textarea"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sm-container container-fluid bg-light p-3">
+                  Translation
+                </div>
+              </div>
+            </div>
+          </div>
+    
 
         <!-- jQuery -->
         <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->

@@ -55,126 +55,30 @@ body {
 
 /* Chatbot */
 
-body .chatbot-section {
-    margin-top: 90px;
+#buttons{
+    margin-top: 100px;
+    margin-left: 30px;
 }
-
-body .chatbot-section #searches {
-    color: white;
+.btn{
+    margin-right: 15px;
 }
-
-#new-chat {
-    text-align: center;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid rgb(183, 183, 183);
-    cursor: pointer;
-    transition: background-color 0.3s;
+.big-container{
+    margin-top: 20px;
+    height: 200px;
+    /* border: 2px solid red; */
 }
-
-#new-chat:hover {
-    background-color: #101010;
+.sm-container{
+    margin-left: 30px;
+    height: 200px;
+    border-radius: 7px;
+    font-size: 1.5rem;
+    
 }
-
-body .chatbot-section #result4 {
-    padding: 15px;
-    background-color: #101010;
-    color: white;
-    overflow-y: auto;
-    height: 75vh;
-}
-
-.result-scroll::-webkit-scrollbar {
-    width: 5px;
-    /* display: none; */
-}
-
-.result-scroll::-webkit-scrollbar-thumb {
-    background-color: #888;
-}
-
-
-
-
-.card {
-
-    height: 130px !important;
-    border: 1px solid rgb(183, 183, 183);
-    background-color: #101010;
-    color: rgb(183, 183, 183);
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-.custom-upload-section {
-    margin-bottom: 20px;
-    height: 110px !important;
-}
-
-
-
-
-
-
-
-#language .dropdown{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#recording {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
-}
-
-
-#language {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.arrow {
-    font-size: 1.5em;
-    color: white;
-}
-
-.responsive-arrow {
-    display: none;
-    font-size: 1.5em;
-    color: white;
-}
-
-@media (max-width: 769px) {
-    #language {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .arrow {
-        display: none;
-    }
-
-    .responsive-arrow {
-        display: inline;
-    }
-
-    #recording {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    #language .dropdown{
-        margin-top: 0px;
-        margin-bottom: 20px;
-    }
+.custom-textarea {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    /* outline: none; Remove outline when focused */
+    
 }
