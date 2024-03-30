@@ -190,26 +190,52 @@
 
         <!-- Chatbot section -->
         <div id="buttons">
-            <button type="button" class="btn btn-light"><i class="fas fa-font"></i> Text</button>
-            <button type="button" class="btn btn-light"><i class="fas fa-image"></i> Images</button>
-            <button type="button" class="btn btn-light"><i class="fas fa-file-pdf"></i> Documents</button>
+            <button type="button" class="btn btn-light"><i
+                    class="fas fa-font"></i> Text</button>
+            <button type="button" class="btn btn-light"><i
+                    class="fas fa-image"></i> Images</button>
+            <button type="button" class="btn btn-light"><i
+                    class="fas fa-file-pdf"></i> Documents</button>
         </div>
+
+
+
+        <div id="lang-container">
+            <select id="inputLanguage" class="form-select lang-button" aria-label="Default select example">
+                <option selected>Input Language</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            <div id="arrow">
+                <img src="..\static\arrow-left-right.svg" alt="Arrow" style="width: 18px; height: 18px; filter: invert(100%);">
+            </div>
+            <select id="outputLanguage" class="form-select lang-button" aria-label="Default select example" >
+                <option selected>Output Language</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+        </div>
+
+
 
         <div class="big-container">
             <div class="row">
-              <div class="col-md-6">
-                <div class="sm-container container-fluid bg-light p-3">
-                    <textarea class="custom-textarea" placeholder="Textarea"></textarea>
+                <div class="col-md-5">
+                    <div class="sm-container container-fluid bg-light p-3">
+                        <textarea class="custom-textarea" placeholder="Textarea"></textarea>
+                        <i class="fas fa-microphone" style="margin-top: 10px;"></i>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="sm-container container-fluid bg-light p-3">
-                  Translation
+                <div class="col-md-5">
+                    <div class="sm-container container-fluid bg-light p-3">
+                        Translation
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-    
+        </div>
+        
 
         <!-- jQuery -->
         <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->

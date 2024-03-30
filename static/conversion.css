@@ -62,16 +62,30 @@ body {
 .btn{
     margin-right: 15px;
 }
-.big-container{
+.big-container {
     margin-top: 20px;
-    height: 200px;
-    /* border: 2px solid red; */
+    border: 2px solid red;
+    width: auto;
+    overflow-x: hidden;
 }
+
+.row {
+    display: flex; 
+    justify-content: space-between; 
+    border: 2px solid green;
+    margin-right: 50px;
+}
+.col-md-5 {
+    flex: 0 0 calc(50% - 2px); /* Each column takes up 50% of space with 30px margin */
+    
+}
+
 .sm-container{
-    margin-left: 30px;
-    height: 200px;
+    height: 250px;
     border-radius: 7px;
     font-size: 1.5rem;
+    margin-left: 30px;
+    margin-right: 30px;
     
 }
 .custom-textarea {
@@ -79,6 +93,37 @@ body {
     background-color: transparent;
     border: none;
     width: 100%;
-    /* outline: none; Remove outline when focused */
+    outline: none; /*Remove outline when focused*/
     
+}
+
+.custom-textarea {
+    /* width: calc(100% - 20px);  */
+    height: 190px; 
+    background-color: transparent;
+    border: none;
+    padding: 10px; 
+    margin: 0;
+    /* outline: none;  */
+    text-align: left; 
+    vertical-align: top; 
+    resize: none; 
+}
+
+#lang-container{
+    border: 2px solid red;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow-x: hidden;
+}
+
+
+
+#arrow {
+    border: 2px solid green;
 }
