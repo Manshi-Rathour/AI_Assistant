@@ -115,7 +115,7 @@ body {
     margin-left: 30px;
     margin-right: 30px;
     width: auto;
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -126,4 +126,25 @@ body {
 
 #arrow {
     border: 2px solid green;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .big-container .row {
+        flex-direction: column;
+    }
+
+    .big-container .col-md-5 {
+        width: 100%;
+    }
+    .sm-container{
+        margin-top: 20px;
+    }
 }

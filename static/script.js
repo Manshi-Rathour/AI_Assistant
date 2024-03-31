@@ -9,6 +9,20 @@ $(document).ready(function () {
     });
 });
 
+function loadNavbar() {
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+        });
+}
+
+
+window.onload = loadNavbar;
+
 
 function openNewChat() {
     // Reload the page
