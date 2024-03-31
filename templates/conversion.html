@@ -32,13 +32,11 @@
 
         <!-- Chatbot section -->
         <div id="buttons">
-            <button type="button" class="btn btn-light"><i
-                    class="fas fa-font"></i> Text</button>
-            <button type="button" class="btn btn-light"><i
-                    class="fas fa-image"></i> Images</button>
-            <button type="button" class="btn btn-light"><i
-                    class="fas fa-file-pdf"></i> Documents</button>
+            <button type="button" class="btn btn-light active" onclick="changeButtonColor(this)"><i class="fas fa-font"></i> Text</button>
+            <button type="button" class="btn btn-light" onclick="changeButtonColor(this)"><i class="fas fa-image"></i> Images</button>
+            <button type="button" class="btn btn-light" onclick="changeButtonColor(this)"><i class="fas fa-file-pdf"></i> Documents</button>
         </div>
+        
 
 
 
@@ -50,7 +48,7 @@
                 <option value="3">Three</option>
               </select>
             <div id="arrow">
-                <img src="..\static\arrow-left-right.svg" alt="Arrow" style="width: 18px; height: 18px; filter: invert(100%);">
+                <img src="..\static\arrow-right.svg" alt="Arrow" style="width: 18px; height: 18px; filter: invert(100%); margin-left: 5px; margin-right: 5px;">
             </div>
             <select id="outputLanguage" class="form-select lang-button" aria-label="Default select example">
                 <option selected>Output Language</option>

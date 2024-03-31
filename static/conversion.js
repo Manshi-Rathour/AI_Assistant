@@ -25,6 +25,15 @@ function loadNavbar() {
 window.onload = loadNavbar;
 
 
+function changeButtonColor(button) {
+    document.querySelectorAll('#buttons button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+}
+
+
 
 console.log("hi");
 
