@@ -22,7 +22,7 @@
             href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
 
         <!-- css file -->
-        <link rel="stylesheet" type="text/css" href="/static/extract_text.css">
+        <link rel="stylesheet" type="text/css" href="/static/translation.css">
     </head>
 
     <body>
@@ -188,56 +188,53 @@
         </div>
 
         <!-- Chatbot section -->
-        <div class="container chatbot-section ">
-            <div class="row">
-                <div class="col-md-4 order-md-1 order-2" id="searches ">
-                    <div class="col-md-12" id="new-chat"
-                        onclick="openNewChat()">
-                        New Chat
-                    </div>
-                    <!-- Image Upload Card -->
-                    <div class="col-sm-12 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <label for="imageInput"
-                                    class="form-label">Upload Image <i
-                                        class="fas fa-image"></i>:</label>
-                                <input type="file"
-                                    class="form-control form-control-sm"
-                                    id="imageInput"
-                                    accept=".jpeg, .jpg, .png">
-                                <button
-                                    class="btn btn-secondary mt-2 btn-sm ms-auto"
-                                    id="imgSubmitButton">Submit Image</button>
-                            </div>
-                        </div>
-                    </div>
+        <div id="buttons">
+            <button type="button" class="btn btn-light active"
+                onclick="changeButtonColor(this)"><i class="fas fa-font"></i>
+                Text</button>
+            <button type="button" class="btn btn-light"
+                onclick="changeButtonColor(this)"><i class="fas fa-image"></i>
+                Images</button>
+            <button type="button" class="btn btn-light"
+                onclick="changeButtonColor(this)"><i
+                    class="fas fa-file-pdf"></i> Documents</button>
+        </div>
 
-                    <!-- PDF Upload Card -->
-                    <div class="col-sm-12 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <label for="pdfInput" class="form-label">Upload
-                                    PDF <i class="fas fa-file-pdf"></i>:</label>
-                                <input type="file"
-                                    class="form-control form-control-sm"
-                                    id="pdfInput" accept=".pdf">
-                                <button
-                                    class="btn btn-secondary mt-2 btn-sm ms-auto"
-                                    id="pdfSubmitButton">Submit PDF</button>
-                            </div>
-                        </div>
+        <div id="lang-container">
+            <select id="inputLanguage" class="form-select lang-button"
+                aria-label="Default select example">
+                <option selected>Input Language</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <div id="arrow">
+                <img src="..\static\arrow-right.svg" alt="Arrow"
+                    style="width: 18px; height: 18px; filter: invert(100%); margin-left: 5px; margin-right: 5px;">
+            </div>
+            <select id="outputLanguage" class="form-select lang-button"
+                aria-label="Default select example">
+                <option selected>Output Language</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="big-container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="sm-container container-fluid bg-light p-3">
+                        <textarea class="custom-textarea"
+                            placeholder="Textarea"></textarea>
+                        <i class="fas fa-microphone"
+                            style="margin-top: 10px;"></i>
                     </div>
                 </div>
-
-                <!-- upload text and result area-->
-                <div class="col-md-8 order-md-2 order-1">
-                    <div id="result3" class="result-scroll mb-3"></div>
-                    <!-- <div id="user-query3" class="input-group mt-2">
-                        <textarea class="form-control" id="queryInput3" placeholder="Put the text you want to summarize..."></textarea>
-                        <button class="btn btn-secondary"
-                            id="submitButton">Submit Text</button>
-                    </div> -->
+                <div class="col-md-5">
+                    <div class="sm-container container-fluid bg-light p-3">
+                        Translation
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,6 +249,6 @@
             crossorigin="anonymous"></script>
 
         <!-- JavaScript file -->
-        <script src="../static/extract_text.js"></script>
+        <script src="../static/translation.js"></script>
     </body>
 </html>

@@ -32,10 +32,170 @@
                 <p id="typed-text">Unlocking the <br> power of <br> AI !</p>
             </div>
             <!-- Navbar -->
-            <div id="navbar-placeholder"></div>
+            <!-- <div id="navbar-placeholder"></div> -->
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg custom-navbar">
+                <div class="container-fluid">
+                    <a id="icon" class="navbar-brand" href="/">
+                        <img src="/static/ai (1).png" alt="Bootstrap" width="30"
+                            height="24">
+                        <span style="font-weight: bold; color: white;">AI
+                            Assistant</span>
+                    </a>
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark"
+                        tabindex="-1" id="navbarNavDropdown"
+                        aria-labelledby="navbarNavDropdownLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title"
+                                id="navbarNavDropdownLabel">Menu</h5>
+                            <button type="button"
+                                class="btn-close btn-close-white"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active white-text"
+                                        aria-current="page" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link white-text"
+                                        href="#contact">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link white-text" href="#">How
+                                        to use</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle white-text"
+                                        href="#" role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Features
+                                    </a>
+                                    <ul
+                                        class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item"
+                                                href="/chatbot">Chatbot</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/summary">Text
+                                                Summarization</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/extract_text">Extract
+                                                Text</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/translation">Language Translation</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- Login and Signup buttons -->
+                            <div class="ms-auto ">
+                                <button id="login" class="btn btn-outline-light"
+                                    type="button" data-bs-toggle="modal"
+                                    data-bs-target="#loginModal">Login</button>
+                                <button id="signup"
+                                    class="btn btn-outline-light ms-2"
+                                    type="button" data-bs-toggle="modal"
+                                    data-bs-target="#signupModal">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1"
+                aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"
+                                id="loginModalLabel">Login</h5>
+                            <button type="button" class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Your login form goes here -->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="loginInputEmail"
+                                        class="form-label">Email
+                                        address</label>
+                                    <input type="email" class="form-control"
+                                        id="loginInputEmail"
+                                        placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginInputPassword"
+                                        class="form-label">Password</label>
+                                    <input type="password" class="form-control"
+                                        id="loginInputPassword"
+                                        placeholder="Password">
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-outline-dark">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signup Modal -->
+            <div class="modal fade" id="signupModal" tabindex="-1"
+                aria-labelledby="signupModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"
+                                id="signupModalLabel">Signup</h5>
+                            <button type="button" class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Your signup form goes here -->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="signupInputUsername"
+                                        class="form-label">Username</label>
+                                    <input type="text" class="form-control"
+                                        id="signupInputUsername"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupInputEmail"
+                                        class="form-label">Email
+                                        address</label>
+                                    <input type="email" class="form-control"
+                                        id="signupInputEmail"
+                                        placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupInputPassword"
+                                        class="form-label">Password</label>
+                                    <input type="password" class="form-control"
+                                        id="signupInputPassword"
+                                        placeholder="Password">
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-outline-dark">Signup</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
 
         <!-- Cards -->
         <div class="container mt-5">
@@ -60,19 +220,19 @@
                 <div class="col-md-6 mb-4">
                     <div class="card text-light bg-dark">
                         <div class="card-body">
-                            <h5 class="card-title">Summarize Your Texts in a
-                                Flash</h5>
-                            <p class="card-text">Save time and effort by
-                                extracting the essence of your reading materials
-                                from various sources, including PDFs, images,
-                                URLs, and plain text. Gain a quick understanding
-                                of complex documents.</p>
-                            <a href="/summary" class="btn btn-outline-light">Try
-                                <img
+                            <h5 class="card-title">Language Transaltion</h5>
+                            <p class="card-text">Easily translate text, images,
+                                documents, and speech across multiple languages.
+                                Break language barriers and facilitate global
+                                communication with our comprehensive tool. Try
+                                it now for seamless translation.</p>
+                            <a href="/translation"
+                                class="btn btn-outline-light">Try <img
                                     src="/static/arrow-up-right.svg" alt></a>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="row">
@@ -82,10 +242,12 @@
                         <div class="card-body">
                             <h5 class="card-title">Extract Text from Hanwritten
                                 Sources</h5>
-                            <p class="card-text">It seamlessly
-                                supports the extraction of textual content,
-                                whether it's from images of handwritten notes or
-                                standard PDF files.</p>
+                            <p class="card-text">Experience seamless extraction
+                                of textual content from diverse sources,
+                                including images of handwritten notes and
+                                standard PDF files. Our tool supports the
+                                extraction process, ensuring smooth retrieval of
+                                text.</p>
                             <a href="/extract_text"
                                 class="btn btn-outline-light">Try <img
                                     src="/static/arrow-up-right.svg" alt></a>
@@ -97,12 +259,15 @@
                 <div class="col-md-6 mb-4">
                     <div class="card text-light bg-dark">
                         <div class="card-body">
-                            <h5 class="card-title">Convert Speech to Text</h5>
-                            <p class="card-text">Convert spoken words into text
-                                in different languages! Whether it's English,
-                                Hindi, or any other supported language.</p>
-                            <a href="/conversion"
-                                class="btn btn-outline-light">Try <img
+                            <h5 class="card-title">Summarize Your Texts in a
+                                Flash</h5>
+                            <p class="card-text">Save time and effort by
+                                extracting the essence of your reading materials
+                                from various sources, including PDFs, images,
+                                URLs, and plain text. Gain a quick understanding
+                                of complex documents.</p>
+                            <a href="/summary" class="btn btn-outline-light">Try
+                                <img
                                     src="/static/arrow-up-right.svg" alt></a>
                         </div>
                     </div>

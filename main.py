@@ -36,7 +36,6 @@ credentials_path = os.path.join(os.path.dirname(__file__), 'advance-stratum-4097
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
 
-
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("main.html", {"request": request})
@@ -57,9 +56,9 @@ async def read_root(request: Request):
     return templates.TemplateResponse("extract_text.html", {"request": request})
 
 
-@app.get("/conversion", response_class=HTMLResponse)
+@app.get("/translation", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("conversion.html", {"request": request})
+    return templates.TemplateResponse("translation.html", {"request": request})
 
 
 class ChatInput(BaseModel):
