@@ -95,6 +95,7 @@ body {
     
 }
 .custom-textarea {
+    font-size: 1.5rem;
     height: 100%;
     background-color: transparent;
     border: none;

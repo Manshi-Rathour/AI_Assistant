@@ -17,7 +17,9 @@ import re
 import httpx
 from cachetools import TTLCache
 from google.cloud import vision_v1 as vision
+from google.cloud import translate_v2 as translate
 import os
+from typing import List
 
 
 app = FastAPI()
@@ -428,53 +430,26 @@ def extract_text_from_image_pdf(image_content):
     return None
 
 
+# Language Translation
+# Initialize Google Cloud Translation client
+translate_client = translate.Client()
 
 
+@app.get("/get_languages")
+async def get_languages() -> List[dict]:
+    try:
+        # Get all supported languages from Google Cloud Translation API
+        languages = translate_client.get_languages()
 
+        # Convert the languages into the required format
+        supported_languages = []
+        for lang_info in languages:
+            code = lang_info['language']
+            name = lang_info['name']
+            supported_languages.append({"code": code, "name": name})
 
-# class FileInput(BaseModel):
-#     file: UploadFile
-#
-#
-#
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-#
-# if OPENAI_API_KEY is None:
-#     raise ValueError("OPENAI_API_KEY environment variable not set.")
-#
-#
-# @app.post("/speech-to-text")
-# async def speech_to_text(file_input: FileInput):
-#     try:
-#         uploaded_file = file_input.file
-#         print(f"Received file: {uploaded_file.filename}")
-#         print(f"File content type: {uploaded_file.content_type}")
-#
-#         # Ensure the uploaded file is an MP3 file
-#         if not uploaded_file.filename.lower().endswith(".mp3"):
-#             raise HTTPException(status_code=400, detail="Only .mp3 files are supported.")
-#
-#         # Save the received MP3 file
-#         file_path = f"uploads/{uploaded_file.filename}"
-#         with open(file_path, "wb") as audio_file:
-#             audio_file.write(uploaded_file.file.read())
-#
-#         # Send the MP3 file to OpenAI for processing
-#         openai_response = send_to_openai(file_path)
-#
-#         # Return OpenAI response
-#         return JSONResponse(content=openai_response, status_code=200)
-#
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-#
-# def send_to_openai(audio_path):
-#     # Prepare the payload for OpenAI
-#     files = {'audio': open(audio_path, 'rb')}
-#     headers = {'Authorization': f'Bearer {OPENAI_API_KEY}'}
-#
-#     # Send the MP3 file to OpenAI for processing
-#     response = requests.post('https://api.openai.com/v1/audio/transcriptions', files=files, headers=headers)
-#
-#     # Return OpenAI response
-#     return response.json()
+        print(supported_languages)
+        return supported_languages
+    except Exception as e:
+        print("Error fetching supported languages:", e)
+        return []

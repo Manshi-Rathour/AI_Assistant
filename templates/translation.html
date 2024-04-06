@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Extract Text</title>
+        <title>Language Translation</title>
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -201,43 +201,38 @@
         </div>
 
         <div id="lang-container">
-            <select id="inputLanguage" class="form-select lang-button"
-                aria-label="Default select example">
-                <option selected>Input Language</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select id="inputLanguage" class="form-select lang-button" aria-label="Input Language">
+                <option selected disabled>Input Language</option>
             </select>
             <div id="arrow">
                 <img src="..\static\arrow-right.svg" alt="Arrow"
                     style="width: 18px; height: 18px; filter: invert(100%); margin-left: 5px; margin-right: 5px;">
             </div>
-            <select id="outputLanguage" class="form-select lang-button"
-                aria-label="Default select example">
-                <option selected>Output Language</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select id="outputLanguage" class="form-select lang-button" aria-label="Output Language">
+                <option selected disabled>Output Language</option>
             </select>
         </div>
 
         <div class="big-container">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="sm-container container-fluid bg-light p-3">
-                        <textarea class="custom-textarea"
-                            placeholder="Textarea"></textarea>
-                        <i class="fas fa-microphone"
-                            style="margin-top: 10px;"></i>
+                    <div class="sm-container container-fluid bg-light p-3" style="position: relative;">
+                        <textarea id="inputTextarea" class="custom-textarea" placeholder="Write your text..."></textarea>
+                        <i id="clearTextarea" class="fas fa-times " style="position: absolute; top: 10px; right: 15px; display: none;"></i>
+                        <i class="fas fa-microphone" style="margin-top: 10px;"></i>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="sm-container container-fluid bg-light p-3">
+                    <div id="translationContainer" class="sm-container container-fluid bg-light p-3">
                         Translation
                     </div>
                 </div>
             </div>
         </div>
+        
+        
+        
+        
 
 
         <!-- Bootstrap 5 JavaScript -->
