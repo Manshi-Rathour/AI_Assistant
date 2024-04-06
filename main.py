@@ -453,3 +453,4 @@ async def get_languages() -> List[dict]:
     except Exception as e:
         print("Error fetching supported languages:", e)
         return []
+
