@@ -20,6 +20,7 @@ from google.cloud import vision_v1 as vision
 from google.cloud import translate_v2 as translate
 import os
 from typing import List
+import json
 
 
 app = FastAPI()
@@ -34,8 +35,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # print(client)
 
 # Set the path of service account credentials JSON file
-credentials_path = os.path.join(os.path.dirname(__file__), 'advance-stratum-409704-ae631be80074.json')
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
+credentials_path1 = os.path.join(os.path.dirname(__file__), 'advance-stratum-409704-ae631be80074.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path1
+
+credentials_path2 = os.path.join(os.path.dirname(__file__), 'advance-stratum-409704-8f6e8f9201b9.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path2
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -431,6 +435,16 @@ def extract_text_from_image_pdf(image_content):
 
 
 # Language Translation
+class TranslationRequest(BaseModel):
+    text: str
+    input_language: str
+    output_language: str
+
+
+class TranslationResponse(BaseModel):
+    translated_text: str
+
+
 # Initialize Google Cloud Translation client
 translate_client = translate.Client()
 
@@ -448,9 +462,32 @@ async def get_languages() -> List[dict]:
             name = lang_info['name']
             supported_languages.append({"code": code, "name": name})
 
-        print(supported_languages)
+        # print(supported_languages)
         return supported_languages
     except Exception as e:
         print("Error fetching supported languages:", e)
         return []
 
+# Load supported languages from JSON file
+with open("languages.json", "r") as file:
+    supported_languages = json.load(file)
+
+
+@app.post("/translate", response_model=TranslationResponse)
+async def translate_text(request: TranslationRequest):
+    try:
+        input_language_name = next(
+            lang["name"] for lang in supported_languages if lang["code"] == request.input_language)
+        output_language_name = next(
+            lang["name"] for lang in supported_languages if lang["code"] == request.output_language)
+
+        # Perform translation using Google Cloud Translation API
+        result = translate_client.translate(request.text, source_language=request.input_language,
+                                            target_language=request.output_language)
+        translated_text = result['translatedText']
+
+        return {"translated_text": translated_text}
+    except StopIteration:
+        raise HTTPException(status_code=400, detail="Language not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error translating text: {e}")

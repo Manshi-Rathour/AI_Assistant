@@ -30,20 +30,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     try {
         const response = await fetch('/get_languages');
         const languages = await response.json();
-        // console.log('Fetched languages:', languages);
 
         const inputLanguageDropdown = document.getElementById('inputLanguage');
         const outputLanguageDropdown = document.getElementById('outputLanguage');
+        // console.log("Input Language dropdown : ", inputLanguageDropdown);
+        // console.log("Output Language dropdown : ", outputLanguageDropdown);
 
-        // console.log('Input Language Dropdown:', inputLanguageDropdown);
-        // console.log('Output Language Dropdown:', outputLanguageDropdown);
-
-        // Populate dropdowns
         languages.forEach(language => {
             const inputOption = document.createElement('option');
             inputOption.value = language.code;
             inputOption.textContent = language.name;
-            inputLanguageDropdown.appendChild(inputOption.cloneNode(true));
+            inputLanguageDropdown.appendChild(inputOption);
 
             const outputOption = document.createElement('option');
             outputOption.value = language.code;
@@ -52,10 +49,66 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
         
         console.log('Dropdowns populated.');
+
+        const inputTextarea = document.getElementById('inputTextarea');
+        const translationContainer = document.getElementById('translationContainer');
+
+        let typingTimer;
+        const doneTypingInterval = 1000; // milliseconds
+
+        inputTextarea.addEventListener('input', function () {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(translateText, doneTypingInterval);
+        });
+
+        inputTextarea.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                clearTimeout(typingTimer);
+                translateText();
+            }
+        });
+
+        function translateText() {
+            const text = inputTextarea.value.trim();
+            if (text === '') {
+                translationContainer.textContent = 'Translation';
+                return;
+            }
+
+            const inputLanguageCode = inputLanguageDropdown.value;
+            const outputLanguageCode = outputLanguageDropdown.value;
+            console.log("Input Language : ", inputLanguageCode);
+            console.log("Output Language : ", outputLanguageCode);
+            
+
+            // Send the text to backend for translation
+            fetch('/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: text,
+                    input_language: inputLanguageCode,
+                    output_language: outputLanguageCode
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                translationContainer.textContent = data.translated_text;
+                console.log('Translated Text:', data.translated_text);
+            })
+            .catch(error => {
+                console.error('Error translating text:', error);
+            });
+        }
     } catch (error) {
         console.error('Error fetching or populating dropdowns:', error);
     }
 });
+
+
+
 
 
 
