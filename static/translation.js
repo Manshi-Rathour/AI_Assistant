@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const inputLanguageDropdown = document.getElementById('inputLanguage');
         const outputLanguageDropdown = document.getElementById('outputLanguage');
-        // console.log("Input Language dropdown : ", inputLanguageDropdown);
-        // console.log("Output Language dropdown : ", outputLanguageDropdown);
 
         languages.forEach(language => {
             const inputOption = document.createElement('option');
@@ -52,19 +50,65 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const inputTextarea = document.getElementById('inputTextarea');
         const translationContainer = document.getElementById('translationContainer');
+        const clearTextareaIcon = document.getElementById('clearTextarea');
+        const micIcon = document.querySelector('.fa-microphone');
 
-        let typingTimer;
-        const doneTypingInterval = 1000; // milliseconds
+        let isRecording = false; // Track recording status
+
+        micIcon.addEventListener('click', function() {
+            if (!isRecording) {
+                startRecording();
+                micIcon.classList.add('red-icon');
+            } else {
+                stopRecording();
+                micIcon.classList.remove('red-icon'); 
+            }
+        });
+
+        
+        
+        
+
+        clearTextareaIcon.addEventListener('click', function() {
+            inputTextarea.value = '';
+            clearTextareaIcon.style.display = 'none';
+            translationContainer.textContent = 'Translation';
+        });
+
+        function startRecording() {
+            const recognition = new webkitSpeechRecognition();
+            const selectedLanguageCode = inputLanguageDropdown.value;
+            recognition.lang = selectedLanguageCode;
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                inputTextarea.value = transcript;
+                translateText();
+                toggleClearIconVisibility();
+            }
+
+            recognition.start();
+            
+            isRecording = true; // Set recording status to true
+        }
+
+        function stopRecording() {
+            recognition.stop(); // Stop recording
+            isRecording = false; // Set recording status to false
+        }
+
+        function toggleClearIconVisibility() {
+            clearTextareaIcon.style.display = inputTextarea.value.trim() ? 'block' : 'none';
+        }
 
         inputTextarea.addEventListener('input', function () {
-            clearTimeout(typingTimer);
-            typingTimer = setTimeout(translateText, doneTypingInterval);
+            toggleClearIconVisibility();
         });
 
         inputTextarea.addEventListener('keydown', function (e) {
             if (e.key === 'Enter') {
-                clearTimeout(typingTimer);
                 translateText();
+                toggleClearIconVisibility();
             }
         });
 
@@ -77,10 +121,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             const inputLanguageCode = inputLanguageDropdown.value;
             const outputLanguageCode = outputLanguageDropdown.value;
-            console.log("Input Language : ", inputLanguageCode);
-            console.log("Output Language : ", outputLanguageCode);
             
-
             // Send the text to backend for translation
             fetch('/translate', {
                 method: 'POST',
@@ -106,6 +147,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching or populating dropdowns:', error);
     }
 });
+
+
 
 
 
