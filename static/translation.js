@@ -23,7 +23,6 @@ $(document).ready(function () {
 
 
 // window.onload = loadNavbar;
-
 document.addEventListener('DOMContentLoaded', async function () {
     console.log('Page loaded.');
     
@@ -48,12 +47,16 @@ document.addEventListener('DOMContentLoaded', async function () {
         
         console.log('Dropdowns populated.');
 
+        
+
         const inputTextarea = document.getElementById('inputTextarea');
-        const translationContainer = document.getElementById('translationContainer');
-        const clearTextareaIcon = document.getElementById('clearTextarea');
+        const translate = document.getElementById('translate');
+        const clearTextareaIcon = document.getElementById('clearTextarea');;
         const micIcon = document.querySelector('.fa-microphone');
 
         let isRecording = false; // Track recording status
+        let typingTimer; // Timer identifier
+        const doneTypingInterval = 500; // Time in milliseconds (1 second)
 
         micIcon.addEventListener('click', function() {
             if (!isRecording) {
@@ -65,14 +68,21 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
 
-        
-        
-        
-
         clearTextareaIcon.addEventListener('click', function() {
             inputTextarea.value = '';
             clearTextareaIcon.style.display = 'none';
-            translationContainer.textContent = 'Translation';
+            translate.textContent = 'Translation';
+        });
+
+        inputTextarea.addEventListener('input', function () {
+            clearTimeout(typingTimer); // Clear the previous timer
+
+            // Start a new timer
+            typingTimer = setTimeout(function () {
+                translateText(); // Call the translateText function after the typing interval
+            }, doneTypingInterval);
+            
+            toggleClearIconVisibility();
         });
 
         function startRecording() {
@@ -97,25 +107,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             isRecording = false; // Set recording status to false
         }
 
-        function toggleClearIconVisibility() {
-            clearTextareaIcon.style.display = inputTextarea.value.trim() ? 'block' : 'none';
-        }
-
-        inputTextarea.addEventListener('input', function () {
-            toggleClearIconVisibility();
-        });
-
-        inputTextarea.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                translateText();
-                toggleClearIconVisibility();
-            }
-        });
+        
 
         function translateText() {
             const text = inputTextarea.value.trim();
             if (text === '') {
-                translationContainer.textContent = 'Translation';
+                translate.textContent = 'Translation';
                 return;
             }
 
@@ -136,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             })
             .then(response => response.json())
             .then(data => {
-                translationContainer.textContent = data.translated_text;
+                translate.textContent = data.translated_text;
                 console.log('Translated Text:', data.translated_text);
             })
             .catch(error => {
@@ -147,6 +144,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching or populating dropdowns:', error);
     }
 });
+
+
 
 
 
@@ -172,22 +171,22 @@ console.log("hi");
 document.addEventListener('DOMContentLoaded', function() {
     const inputTextarea = document.getElementById('inputTextarea');
     const clearTextareaIcon = document.getElementById('clearTextarea');
-    const translationContainer = document.getElementById('translationContainer');
+    const translate = document.getElementById('translate');
 
     inputTextarea.addEventListener('input', function() {
         if (inputTextarea.value.trim() === '') {
             clearTextareaIcon.style.display = 'none';
-            translationContainer.textContent = 'Translation';
+            translate.textContent = 'Translation';
         } else {
             clearTextareaIcon.style.display = 'block';
-            translationContainer.textContent = 'Translating...';
+            translate.textContent = 'Translating...';
         }
     });
 
     clearTextareaIcon.addEventListener('click', function() {
         inputTextarea.value = ''; // Clear textarea
         clearTextareaIcon.style.display = 'none'; // Hide clear icon
-        translationContainer.textContent = 'Translation'; // Reset translation container
+        translate.textContent = 'Translation'; // Reset translation container
     });
 });
 

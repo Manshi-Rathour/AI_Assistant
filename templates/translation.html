@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Language Translation</title>
+        <link rel="icon" href="data:,">
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -81,13 +82,15 @@
                                     <li><a class="dropdown-item"
                                             href="/chatbot">Chatbot</a></li>
                                     <li><a class="dropdown-item"
+                                            href="/translation">Language
+                                            Translation</a></li>
+                                    <li><a class="dropdown-item"
                                             href="/summary">Text
                                             Summarization</a></li>
                                     <li><a class="dropdown-item"
                                             href="/extract_text">Extract
                                             Text</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="/translation">Language Translation</a></li>
+
                                 </ul>
                             </li>
                         </ul>
@@ -201,14 +204,16 @@
         </div> -->
 
         <div id="lang-container">
-            <select id="inputLanguage" class="form-select lang-button" aria-label="Input Language">
+            <select id="inputLanguage" class="form-select lang-button"
+                aria-label="Input Language">
                 <option selected disabled>Input Language</option>
             </select>
             <div id="arrow">
                 <img src="..\static\arrow-right.svg" alt="Arrow"
                     style="width: 18px; height: 18px; filter: invert(100%); margin-left: 5px; margin-right: 5px;">
             </div>
-            <select id="outputLanguage" class="form-select lang-button" aria-label="Output Language">
+            <select id="outputLanguage" class="form-select lang-button"
+                aria-label="Output Language">
                 <option selected disabled>Output Language</option>
             </select>
         </div>
@@ -216,25 +221,32 @@
         <div class="big-container">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="sm-container container-fluid bg-light p-3" style="position: relative;">
-                        <textarea id="inputTextarea" class="custom-textarea" placeholder="Write your text..."></textarea>
-                        <i id="clearTextarea" class="fas fa-times " style="position: absolute; top: 10px; right: 15px; display: none;"></i>
-                        <i id="micIcon" class="fas fa-microphone " style="margin-top: 10px;"></i>
+                    <div class="sm-container container-fluid bg-light p-3"
+                        style="position: relative;">
+                        <textarea id="inputTextarea" class="custom-textarea"
+                            placeholder="Write your text..."></textarea>
+                        <i id="clearTextarea" class="fas fa-times "
+                            style="position: absolute; top: 10px; right: 15px; display: none;"></i>
+                        <i id="micIcon" class="fas fa-microphone "
+                            style="margin-top: 10px;"></i>
+                        <i class="fas fa-volume-up"
+                            style="margin-top: 10px; margin-left: 10px;"></i>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div id="translationContainer" class="sm-container container-fluid bg-light p-3">
-                        Translation
+                    <div id="translationContainer"
+                        class="sm-container container-fluid bg-light p-3">
+                        <div class="translation-text" id="translate">
+                            Translation
+                        </div>
+                        <div class="speaker-icon-container">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        
-        
-        
-        
-        
-
 
         <!-- Bootstrap 5 JavaScript -->
         <script
