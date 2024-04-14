@@ -18,10 +18,12 @@ import httpx
 from cachetools import TTLCache
 from google.cloud import vision_v1 as vision
 from google.cloud import translate_v2 as translate
+from google.cloud import texttospeech
 import os
 from typing import List
 import json
 import html
+import base64
 
 
 app = FastAPI()
@@ -41,6 +43,10 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path1
 
 credentials_path2 = os.path.join(os.path.dirname(__file__), 'advance-stratum-409704-8f6e8f9201b9.json')
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path2
+
+credentials_path3 = os.path.join(os.path.dirname(__file__), 'advance-stratum-409704-5126d296bfa8.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path3
+
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -474,25 +480,6 @@ with open("languages.json", "r") as file:
     supported_languages = json.load(file)
 
 
-# @app.post("/translate", response_model=TranslationResponse)
-# async def translate_text(request: TranslationRequest):
-#     try:
-#         input_language_name = next(
-#             lang["name"] for lang in supported_languages if lang["code"] == request.input_language)
-#         output_language_name = next(
-#             lang["name"] for lang in supported_languages if lang["code"] == request.output_language)
-#
-#         # Perform translation using Google Cloud Translation API
-#         result = translate_client.translate(request.text, source_language=request.input_language,
-#                                             target_language=request.output_language)
-#         translated_text = result['translatedText']
-#
-#         return {"translated_text": translated_text}
-#     except StopIteration:
-#         raise HTTPException(status_code=400, detail="Language not found")
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Error translating text: {e}")
-
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
     try:
@@ -513,3 +500,35 @@ async def translate_text(request: TranslationRequest):
         raise HTTPException(status_code=400, detail="Language not found")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error translating text: {e}")
+
+
+@app.post("/speak")
+async def speak_text(request_data: dict):
+    try:
+        text = request_data.get("text")
+        language = request_data.get("language")
+
+        if not text or not language:
+            raise HTTPException(status_code=400, detail="Text or language missing in request")
+
+        client = texttospeech.TextToSpeechClient()
+        synthesis_input = texttospeech.SynthesisInput(text=text)
+        voice = texttospeech.VoiceSelectionParams(
+            language_code=language, ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
+        )
+        audio_config = texttospeech.AudioConfig(
+            audio_encoding=texttospeech.AudioEncoding.MP3
+        )
+
+        response = client.synthesize_speech(
+            input=synthesis_input, voice=voice, audio_config=audio_config
+        )
+
+        # Encode the audio content to base64
+        audio_content_base64 = base64.b64encode(response.audio_content).decode('utf-8')
+
+        # Return the base64-encoded audio content in the JSON response
+        return {"audio_content": audio_content_base64}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
