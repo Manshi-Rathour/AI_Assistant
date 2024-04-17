@@ -1,3 +1,5 @@
+# This configuration builds a Python application using Buildpacks and deploys to Cloud Run.
+
 steps:
 - name: 'gcr.io/buildpacks/pack'
   args:
@@ -22,10 +24,10 @@ steps:
   - 'asia-south2'
   - '--allow-unauthenticated' # Remove for production!
   - '--set-env-vars=HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition,OPENAI_API_KEY=OPENAI_API_KEY,SPEECH_TO_TEXT_API_KEY=speech_to_text,TEXT_TO_SPEECH_API_KEY=text_to_speech,TRANSLATION_API_KEY=translation'
-  - secretEnvVars:
-      HANDWRITTEN_RECOGNITION_API_KEY: handwritten_recognition
-      OPENAI_API_KEY: OPENAI_API_KEY  
-      SPEECH_TO_TEXT_API_KEY: speech_to_text
-      TEXT_TO_SPEECH_API_KEY: text_to_speech
-      TRANSLATION_API_KEY: translation
-
+secrets:
+  secretEnv:
+    HANDWRITTEN_RECOGNITION_API_KEY: handwritten_recognition
+    OPENAI_API_KEY: OPENAI_API_KEY  
+    SPEECH_TO_TEXT_API_KEY: speech_to_text
+    TEXT_TO_SPEECH_API_KEY: text_to_speech
+    TRANSLATION_API_KEY: translation
