@@ -1,20 +1,28 @@
-stages:
-- build
-  - name: 'cloudbuild.googleapis.com/builders/python:latest'  # Replace with your project ID and desired image name
-    substitutions:
-      _PROJECT_ID: advance-stratum-409704
-    steps:
-      - name: 'gcloud run deploy'
-        args: ['build', '-t', 'advance-stratum-409704/ai-assistant:latest', '.']
-  - name: 'gcloud run deploy'
-    args: ['ai-assistant', '--image', 'advance-stratum-409704/ai-assistant:latest', 
-           '--region', 'asia-south2', 
-           --set-env-vars: 'HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition', 
-               'OPENAI_API_KEY=OPENAI_API_KEY', 
-               'SPEECH_TO_TEXT_API_KEY=speech_to_text', 
-               'TEXT_TO_SPEECH_API_KEY=text_to_speech', 
-               'TRANSLATION_API_KEY=translation', '--pack', 'true']  
-    secretEnvVars:
+steps:
+- name: 'gcr.io/buildpacks/pack'
+  args:
+  - 'build'
+  - 'advance-stratum-409704/ai-assistant'
+  - '--builder=gcr.io/buildpacks/builder'
+  - '--env=GOOGLE_RUNTIME=python'
+  - '--set-env=HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition'
+  - '--set-env=OPENAI_API_KEY=OPENAI_API_KEY'
+  - '--set-env=SPEECH_TO_TEXT_API_KEY=speech_to_text'
+  - '--set-env=TEXT_TO_SPEECH_API_KEY=text_to_speech'
+  - '--set-env=TRANSLATION_API_KEY=translation'
+  - '.'
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'ai-assistant'
+  - '--image'
+  - 'advance-stratum-409704/ai-assistant'
+  - '--region'
+  - 'asia-south2'
+  - '--allow-unauthenticated' # Remove for production!
+  - '--set-env-vars=HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition,OPENAI_API_KEY=OPENAI_API_KEY,SPEECH_TO_TEXT_API_KEY=speech_to_text,TEXT_TO_SPEECH_API_KEY=text_to_speech,TRANSLATION_API_KEY=translation'
+  - secretEnvVars:
       HANDWRITTEN_RECOGNITION_API_KEY: handwritten_recognition
       OPENAI_API_KEY: OPENAI_API_KEY  
       SPEECH_TO_TEXT_API_KEY: speech_to_text
