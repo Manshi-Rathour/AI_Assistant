@@ -1,33 +1,28 @@
-# This configuration builds a Python application using Buildpacks and deploys to Cloud Run.
+# This configuration uses Cloud Build with Buildpacks for a Python application
 
 steps:
-- name: 'gcr.io/buildpacks/pack'
+- name: 'gcr.io/buildpacks/pack'  # Build using Buildpacks
   args:
-  - 'build'
-  - 'advance-stratum-409704/ai-assistant'
-  - '--builder=gcr.io/buildpacks/builder'
-  - '--env=GOOGLE_RUNTIME=python'
-  - '--set-env=HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition'
-  - '--set-env=OPENAI_API_KEY=OPENAI_API_KEY'
-  - '--set-env=SPEECH_TO_TEXT_API_KEY=speech_to_text'
-  - '--set-env=TEXT_TO_SPEECH_API_KEY=text_to_speech'
-  - '--set-env=TRANSLATION_API_KEY=translation'
-  - '.'
-- name: 'gcr.io/cloud-builders/gcloud'
+    - 'build'
+    - 'advance-stratum-409704/ai-assistant'  # Replace with your desired image name
+    - '--builder=gcr.io/buildpacks/builder'
+    - '--env=GOOGLE_RUNTIME=python'  # Set runtime environment
+    - '.'  # Current directory (source code)
+- name: 'gcr.io/cloud-builders/gcloud'  # Deploy to Cloud Run
   args:
-  - 'run'
-  - 'deploy'
-  - 'ai-assistant'
-  - '--image'
-  - 'advance-stratum-409704/ai-assistant'
-  - '--region'
-  - 'asia-south2'
-  - '--allow-unauthenticated' # Remove for production!
-  - '--set-env-vars=HANDWRITTEN_RECOGNITION_API_KEY=handwritten_recognition,OPENAI_API_KEY=OPENAI_API_KEY,SPEECH_TO_TEXT_API_KEY=speech_to_text,TEXT_TO_SPEECH_API_KEY=text_to_speech,TRANSLATION_API_KEY=translation'
-secrets:
+    - 'run'
+    - 'deploy'
+    - 'ai-assistant'  # Service name
+    - '--image'
+    - 'advance-stratum-409704/ai-assistant'
+    - '--region'
+    - 'asia-south2'  # Replace with your desired region
+    - '--allow-unauthenticated'  # Remove for production!
+
+secrets:  # Define secrets here
   secretEnv:
     HANDWRITTEN_RECOGNITION_API_KEY: handwritten_recognition
-    OPENAI_API_KEY: OPENAI_API_KEY  
+    OPENAI_API_KEY: OPENAI_API_KEY
     SPEECH_TO_TEXT_API_KEY: speech_to_text
     TEXT_TO_SPEECH_API_KEY: text_to_speech
     TRANSLATION_API_KEY: translation
