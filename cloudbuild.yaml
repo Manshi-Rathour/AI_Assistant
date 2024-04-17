@@ -19,7 +19,7 @@ steps:
       - 'asia-south2'  # Replace with your desired region
       - '--allow-unauthenticated'  # Remove for production!
 
-secrets:  # Define secrets here
+secrets:  
   secretEnv:
     HANDWRITTEN_RECOGNITION_API_KEY: handwritten_recognition
     OPENAI_API_KEY: OPENAI_API_KEY
