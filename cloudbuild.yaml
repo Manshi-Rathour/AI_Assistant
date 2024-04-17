@@ -2,11 +2,11 @@
 
 stages:
 - build
-  - name: 'gcr.io/advance-stratum-409704/ai-assistant'  # Replace with your project ID and desired image name
+  - name: 'cloudbuild.googleapis.com/builders/python:latest'  # Replace with your project ID and desired image name
     substitutions:
       _PROJECT_ID: advance-stratum-409704
     steps:
-      - name: 'gcr.io/cloud-builders/docker'
+      - name: 'gcloud run deploy'
         args: ['build', '-t', 'advance-stratum-409704/ai-assistant:latest', '.']
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['run', 'deploy', 'ai-assistant', '--image', 'advance-stratum-409704/ai-assistant:latest', 
