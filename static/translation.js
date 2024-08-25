@@ -10,19 +10,7 @@ $(document).ready(function () {
 });
 
 
-// function loadNavbar() {
-//     fetch('navbar.html')
-//         .then(response => response.text())
-//         .then(data => {
-//             document.getElementById('navbar-placeholder').innerHTML = data;
-//         })
-//         .catch(error => {
-//             console.error('Error loading navbar:', error);
-//         });
-// }
 
-
-// window.onload = loadNavbar;
 
 document.addEventListener('DOMContentLoaded', async function () {
     console.log('Page loaded.');
@@ -310,8 +298,6 @@ function changeButtonColor(button) {
 }
 
 
-
-console.log("hi");
 
 
 document.addEventListener('DOMContentLoaded', function () {
